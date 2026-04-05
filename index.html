@@ -1,70 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Riya's Cool Website</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial;
 
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #1e3a8a, #9333ea);
-            font-family: Arial, sans-serif;
-        }
+  /* 🌈 animated gradient background */
+  background: linear-gradient(270deg, #6a11cb, #2575fc, #ff4b2b);
+  background-size: 600% 600%;
+  animation: bgMove 10s ease infinite;
+}
 
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            color: white;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-        }
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-        h1 {
-            font-size: 40px;
-        }
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 40px rgba(0,0,0,0.3);
 
-        p {
-            font-size: 18px;
-        }
+  /* 💫 floating animation */
+  animation: float 3s ease-in-out infinite;
+}
 
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            background: #38bdf8;
-            color: black;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
 
-        button:hover {
-            background: #0ea5e9;
-            transform: scale(1.1);
-        }
-    </style>
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: #00f2fe;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: 0.3s;
+}
 
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00f2fe;
+}
+
+/* 💥 ripple effect */
+button::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+button:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.clicked {
+  transform: scale(1.2);
+  background: #ff4b2b;
+  color: white;
+}
+
+</style>
 </head>
 
 <body>
 
-    <div class="card">
-        <h1>Hello Riya 🚀</h1>
-        <p>Welcome to my super cool website 😎</p>
-        <button onclick="showMessage()">Click Me</button>
-    </div>
+<div class="card">
+  <h1 id="title">Hello Riya 🚀</h1>
+  <p id="text">Welcome to my super cool website 😎</p>
 
-    <script>
-        function showMessage() {
-            alert("You clicked the button 🎉");
-        }
-    </script>
+  <button onclick="coolEffect(this)">Click Me</button>
+</div>
+
+<script>
+function coolEffect(btn) {
+  btn.classList.add("clicked");
+
+  document.getElementById("title").innerText = "🔥 You Clicked Me 🔥";
+  document.getElementById("text").innerText = "अब website next level हो गई 😎🚀";
+
+  setTimeout(() => {
+    btn.classList.remove("clicked");
+  }, 300);
+}
+</script>
 
 </body>
 </html>
