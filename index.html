@@ -1,24 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My First Project</title>
+    <title>Riya's Cool Website</title>
 
     <style>
         body {
-            background-color: #0f172a;
-            color: white;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e3a8a, #9333ea);
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
             text-align: center;
-            font-family: Arial;
-            margin-top: 100px;
+            color: white;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
         }
 
         h1 {
             font-size: 40px;
-            color: #38bdf8;
         }
 
         p {
-            font-size: 20px;
+            font-size: 18px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #38bdf8;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0ea5e9;
+            transform: scale(1.1);
         }
     </style>
 
@@ -26,8 +54,17 @@
 
 <body>
 
-    <h1>Hello Riya 🚀</h1>
-    <p>My first stylish website 💅</p>
+    <div class="card">
+        <h1>Hello Riya 🚀</h1>
+        <p>Welcome to my super cool website 😎</p>
+        <button onclick="showMessage()">Click Me</button>
+    </div>
+
+    <script>
+        function showMessage() {
+            alert("You clicked the button 🎉");
+        }
+    </script>
 
 </body>
 </html>
